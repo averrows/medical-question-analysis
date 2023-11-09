@@ -1,16 +1,16 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
+from flask_cors import CORS
 from sentiment import SentimentClassifier
 
-app = Flask(__name__)
-
-
+app = Flask(__name__,static_folder='static')
+CORS(app, origins=["*"])
 MODELS = {
   "sentiment": SentimentClassifier("./standard-bert-sentiment"),
 }
 
 @app.route("/")
-def hello():
-  return "Hello World!"
+def main():
+  return render_template('index.html')
 
 @app.route("/nlp/<string:task>/predict", methods=["GET"])
 def predict(task):

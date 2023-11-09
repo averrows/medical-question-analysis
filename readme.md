@@ -8,3 +8,6 @@
 
 To hit the inference API:
 ```<url>/nlp/<task>/predict?text=example text```
+
+Run the webpage:
+```<url>/```
