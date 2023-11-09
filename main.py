@@ -1,6 +1,6 @@
 from sentiment import SentimentClassifier
 def main():
-  sentiment_clf = SentimentClassifier("averrous/standard-bert-sentiment-classifier")
+  sentiment_clf = SentimentClassifier("./standard-bert-sentiment")
   
   while(True):
     text = input("Enter a sentence: ")
