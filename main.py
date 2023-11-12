@@ -10,23 +10,29 @@ def main():
   similarity_clf = SimilarityClassifier("./question-similarity-bert")
   
   while(True):
+    print('='*40)
+    print()
     # input pertanyaan pertama
     question_1 = input("Enter first question: ")
     # medical question classification
     res = med_question_clf.predict(question_1)
-    print("This question is", res)
+    print()
+    print(">> This question is", res)
     if res == "medical": 
-      print("The sentiment is", sentiment_clf.predict(question_1)) # analisis sentimen
+      print(">> The sentiment is", sentiment_clf.predict(question_1)) # analisis sentimen
+      print()
       # input pertanyaan kedua
       question_2 = input("Enter second question: ")
+      print()
       res = med_question_clf.predict(question_2)
-      print("This question is", res)
+      print(">> This question is", res)
       if res == "medical":
         # similarity checking kedua pertanyaan
-        print("The sentiment is", sentiment_clf.predict(question_2)) # analisis sentimen
-        print("These two question is", similarity_clf.predict(question_1, question_2))
-      print("")
-    print("")
+        print(">> The sentiment is", sentiment_clf.predict(question_2)) # analisis sentimen
+        print()
+        print(">> These two question is", similarity_clf.predict(question_1, question_2))
+      print()
+    print()
 
 if __name__ == "__main__":
   main()
