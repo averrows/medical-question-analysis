@@ -1,7 +1,7 @@
 from transformers import AutoModelForSequenceClassification, AutoTokenizer
 import torch
 
-
+# Kelas untuk Klasifikasi Similarity
 class SimilarityClassifier(object):
   def __init__(self, path, device = None) -> None:
     self.path = path
@@ -12,11 +12,13 @@ class SimilarityClassifier(object):
       1: "similar",
     }
 
+  # load model yang sudah disimpan dari hasil eksperimen
   def load_model(self):
     self.model = AutoModelForSequenceClassification.from_pretrained(self.path)
     self.tokenizer = AutoTokenizer.from_pretrained("bert-base-uncased")
     self.model.to(self.device)
 
+  # prediksi text input dengan model yang telah dibuat
   def predict(self, q1, q2):
     with torch.no_grad():
       inputs = self.tokenizer(q1, q2, return_tensors="pt")

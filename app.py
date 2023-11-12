@@ -23,13 +23,18 @@ def predict(task):
   
   model = MODELS[task]
 
+  # similarity task
   if task == "similarity":
+    # input field text kedua question
     text1 = request.args.get("text1", default="", type=str)
     text2 = request.args.get("text2", default="", type=str)
 
+    # handling error
     if text1 == "" or text2 == "":
       return "Fill in the text1 and text2 query to predict", 404
     pred = model.predict(text1, text2)
+
+  # classification and sentiment analysis task
   else:
     text = request.args.get("text", default="", type=str)
     if text == "":
